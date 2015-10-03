@@ -13,7 +13,7 @@ var app = express();
 var server = require('http').createServer(app);
 
 // Connect to database
-mongoose.connect('mongodb://localhost/telebum');
+mongoose.connect('mongodb://localhost/AdventureTime');
 
 // Setup server
 expressConfig(app);

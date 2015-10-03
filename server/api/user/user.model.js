@@ -6,11 +6,12 @@ var Event = require('../event/event.model');
 
 var UserSchema = new Schema({
   name: String	,
-  friendslist: [UserSchema],
+  //friendslist: [UserSchema],
   events: [Event],
   tags: [String],
   location: String,
   password: String
 });
 
-module.exports = mongoose.model('User', UserSchema);
+var User = mongoose.model("User", UserSchema)
+module.exports = User
