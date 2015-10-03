@@ -19,24 +19,19 @@ exports.create = function(req, res){
 
 // get event name
 exports.edit = function(req, res){
-  var eventName = req.body.eventName;
-  if (!eventName){
-    return handleError(res, "No event Specified");
-  }
-  Event.findOne({
-    "name": req.body.name
-  },function(err, event){
-    if (event){
-      event = req.body
-    }else{
-      console.log("Already exists")
-    }
-    event.save(function(err, event){
-      if (err) return validationError(res, err);
-      res.send(204);
+  var name = req.body.name;
+  if(!name) return handleError(res,err);
+  User.findOne({'name': name}, function(err, user){
+    if (err) return res.send(500, err);
+      user.cost = req.body.cost;
+      user.fun = req.body.fun;
+      user.save(function(err){
+      if (err) return res.send(500, err);
+        res.json(200, {success: true});
+      })
     });
-  })
-};
+  };
+
 
 function handleError(res, err) {
   return res.send(500, err);
