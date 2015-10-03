@@ -4,19 +4,32 @@ var Event = require('./event.model');
 
 // get event name
 exports.create = function(req, res){
-  var eventName = req.body.eventName;
-  console.log("heelp")
+  var eventName = req.body.name;
+  console.log(req.body);
   if (!eventName){
     return handleError(res, "No event Specified");
   }
-  Event.findone({
-    "eventName": req.body.eventName
+  var aEvent = new Event(req.body);
+  aEvent.save(function(err, event){
+    if (err) return validationError(res, err);
+    res.send(204);
+  });
+
+};
+
+// get event name
+exports.edit = function(req, res){
+  var eventName = req.body.eventName;
+  if (!eventName){
+    return handleError(res, "No event Specified");
+  }
+  Event.findOne({
+    "name": req.body.name
   },function(err, event){
     if (event){
-      console.log("Already exists")
+      event = req.body
     }else{
-      // Create new class year and set as current
-      event = new Event(req.body);
+      console.log("Already exists")
     }
     event.save(function(err, event){
       if (err) return validationError(res, err);

@@ -13,34 +13,24 @@ gulp.task('css', function(){
 
 });
 
-// task for linting js files
-gulp.task('js', function(){
-
-	// grab all the files
-	// return gulp.src([	'server/**/*.js',	'client/**/*.js'])
-		// .pipe(jshint())
-		// .pipe(jshint.reporter('default'));
-});
-
-// task to lint, minify, and concat frontend files
-gulp.task('angular', function(){
-	// return gulp.src(['public/app/.js', 'public/app/**/*.js'])
-	// 	.pipe(ngAnnotate())
-	// 	.pipe(concat('all.js'))
-	// 	.pipe(uglify())
-	// 	.pipe(gulp.dest('public/dist'));
-});
 
 gulp.task('watch',function() {
 
 	// watch js files and run lint and run js and angular tasks
-	gulp.watch(	['server/**/*.js', 'client/**/*.js'],
-				['js', 'angular']);
+	// gulp.watch(	['server/**/*.js', 'client/**/*.js'],
+	// 			['js', 'angular']);
 
 	// watch css files and run css task to minify
 	// gulp.watch(	['client/assets/css/*.css'],['css']);
 
 });
+
+gulp.task('restartServer', function(){
+  gulp
+    .src('server.js')
+    .pipe(jshint())
+    .pipe(nodemon())
+})
 
 // the nodemon task
 gulp.task('nodemon',function() {
@@ -48,8 +38,6 @@ gulp.task('nodemon',function() {
 		script:'server/app.js',
 		ext:'js'
 	})
-	.on('start', ['watch'])
-	.on('change', ['watch'])
 	.on('restart',function() {
 		console.log("restarted");
 	});

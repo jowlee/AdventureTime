@@ -7,6 +7,7 @@ var config = require('../../config/environment');
 var router = express.Router();
 
 router.put('/create', controller.create);
+router.post('/edit', controller.edit);
 
 
 module.exports = router;

@@ -20,7 +20,7 @@ expressConfig(app);
 routes(app);
 
 server.listen(8080);
-console.log("magic on port 8080");
+console.log("The magic on port 8080");
 
 // Expose app
 exports = module.exports = app;
