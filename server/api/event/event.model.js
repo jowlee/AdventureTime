@@ -12,5 +12,5 @@ var EventSchema = new Schema({
   fitness: Number
 });
 
-Event = mongoose.model('Event', EventSchema);
+var Event = mongoose.model('Event', EventSchema);
 module.exports = Event;
