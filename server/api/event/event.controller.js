@@ -21,11 +21,11 @@ exports.create = function(req, res){
 exports.edit = function(req, res){
   var name = req.body.name;
   if(!name) return handleError(res,err);
-  User.findOne({'name': name}, function(err, user){
+  Event.findOne({'name': name}, function(err, Event){
     if (err) return res.send(500, err);
-      user.cost = req.body.cost;
-      user.fun = req.body.fun;
-      user.save(function(err){
+      Event.cost = req.body.cost;
+      Event.fun = req.body.fun;
+      Event.save(function(err){
       if (err) return res.send(500, err);
         res.json(200, {success: true});
       })

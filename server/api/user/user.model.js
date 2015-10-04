@@ -8,7 +8,7 @@ var UserSchema = new Schema({
   username: {type:String, unique: true},
   //friendslist: [UserSchema],
   events: [Event],
-  tags: [String],
+  tag: [String],
   home: String,
   password: String
 });

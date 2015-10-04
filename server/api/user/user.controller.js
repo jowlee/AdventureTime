@@ -2,6 +2,7 @@
 
 var User = require('./user.model');
 
+// creates initial user
 exports.create = function(req, res){
   var username = req.body.username;
   console.log(req.body);
@@ -13,21 +14,54 @@ exports.create = function(req, res){
   });
 };
 
+// edits user values
 exports.edit = function(req, res){
   var username = req.body.username;
   console.log(req.body);
   if(!username) return handleError(res,err);
   User.findOne({'username': username}, function(err, user){
     if (err) return res.send(500, err);
-      user.home = req.body.home;
-      user.password = req.body.password;
-      user.save(function(err){
-      if (err) return res.send(500, err);
-        res.json(200, {success: true});
-      })
+    user.home = req.body.home;
+    user.password = req.body.password;
+    user.save(function(err){
+    if (err) return res.send(500, err);
+      res.json(200, {success: true});
     });
-  };
-  
+  });
+};
+
+//adds new tags
+exports.addTag = function(req, res){
+  var username = req.body.username;
+  if(!username) return handleError(res,err);
+  User.findOne({'username': username}, function(err, user){
+    if (err) return res.send(500, err);
+    var tag = req.body.tag;
+    if (!tag) return handleError(res,err);
+    user.tag.push(tag);
+    user.save(function(err) {
+      if (err) return validationError(res, err);
+      res.json(200, {success: tag+" added"});
+    });
+  });
+};
+
+// removes tags
+exports.removeTag = function(req, res){
+  var username = req.body.username;
+  var tag = req.body.tag;
+  if(!username || !tag) return handleError(res,err);
+  User.findOne({'username':username}, function(err, user){
+    if(err) return res.send(500,err);
+    var tagIndex = user.tag.indexOf(tag);
+    if(tagIndex == -1) return res.json("tag does not exist can not remove")
+    user.tag.splice(index,1);
+    user.save(function(err) {
+      if (err) return validationError(res, err);
+      res.json(200, {success: tag+" removed"})
+    });
+  });
+};
 
 function handleError(res,err) {
   return res.send(500,err);
