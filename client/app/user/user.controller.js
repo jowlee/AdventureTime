@@ -13,6 +13,13 @@ angular.module('AdventureTime')
         }
         $scope.currentPage = 0;
     };
+
+    $scope.getUserName = function(){
+      $http.get("/api/user/getName").success{
+        
+      }
+    }
+
     })
   .filter('startFrom', function() {
     return function(input, start) {

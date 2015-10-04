@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('AdventureTime')
-  .controller('NavbarCtrl', function ($scope, $location, $http, Auth) {
+  .controller('NavbarCtrl', function ($scope, $location, $http) {
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
