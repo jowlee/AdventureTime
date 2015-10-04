@@ -15,16 +15,12 @@ angular.module('AdventureTime')
 
 
 
-    $scope.isActive = function(route) {
-      return route === $location.path();
-    };
+    var getUserBio = function(){
+      $http.get("/api/user/nick").success(function(user){
+        $scope.user = user[0];
+        console.log($scope.user);
 
-    // Toggles the display of URP form
-    var getCurrentUser = function(){
-      $http.get("/api/user/displayURP")
-        .success(function(data){
-          $scope.displayURP = data.displayURP;
-        });
+      });
     };
 
 

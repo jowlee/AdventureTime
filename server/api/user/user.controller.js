@@ -82,15 +82,13 @@ exports.addEvent = function(req, res){
   };
 
   exports.getName = function(req, res){
-    if(!req.params.username){
-      console.log("in getName with no value");
-      return res.json("No Name Input"); }
-    else{
-      Event.findOne({'name':req.params.username}, function(err, user){
-        if (err) return res.send(500, err);
-        return res.json(user.username);
-      })
-    };
+    var username = String(req.params.id);
+
+    User.find({ username: username}, function(err, user){
+      if (err) return res.send(500, err);
+      res.json(200, user);
+    });
+
   };
 
 function handleError(res,err) {

@@ -8,41 +8,26 @@
 			<div class="panel-body">
               		<div class="row">
                         <div class="col-xs-12 col-sm-8">
-                            <h2{user.getUserName}</h2>
-                            <p><strong>About: </strong> Web Designer / UI. </p>
-                            <p><strong>Hobbies: </strong> Read, out with friends, listen to music, draw and learn new things. </p>
+                            <h2>{{user.username}}</h2>
+                            <p><strong>About: </strong> {{user.about}} </p>
+                            <p><strong>Hobbies: </strong> {{user.hobbies}} </p>
                             <p><strong>Skills: </strong>
-                                <span class="label label-info tags">html5</span>
-                                <span class="label label-info tags">css3</span>
-                                <span class="label label-info tags">jquery</span>
-                                <span class="label label-info tags">bootstrap3</span>
+                              <span ng-repeat = 'tag in user.tag' class="label label-info tags">{{tag}}</span>
                             </p>
                         </div><!--/col-->
                         <div class="col-xs-12 col-sm-4 text-center">
-                                <img src="http://api.randomuser.me/portraits/men/49.jpg" alt="" class="center-block img-circle img-responsive">
-                                <ul class="list-inline ratings text-center" title="Ratings">
-                                  <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
-                                  <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
-                                  <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
-                                  <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
-                                  <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
-                                </ul>
+                                <img src="https://scontent-lga3-1.xx.fbcdn.net/hphotos-xtp1/v/t1.0-9/12002946_10205970397713892_5214564346523487839_n.jpg?oh=1daf82b3b772d7d9e3dac9ef1bb4093d&oe=56A1E5D6" alt="" class="center-block img-circle img-responsive">
                         </div><!--/col-->
 
-                        <div class="col-xs-12 col-sm-4">
-                            <h2><strong> 20,7K </strong></h2>
-                            <p><small>Followers</small></p>
-                            <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Follow </button>
+                        <div class="col-xs-12 col-sm-6">
+                            <h2><strong> 500 </strong></h2>
+                            <p><small>Friends</small></p>
+                            <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Add Friend </button>
                         </div><!--/col-->
-                        <div class="col-xs-12 col-sm-4">
-                            <h2><strong>245</strong></h2>
-                            <p><small>Following</small></p>
-                            <button class="btn btn-info btn-block"><span class="fa fa-user"></span> View Profile </button>
-                        </div><!--/col-->
-                        <div class="col-xs-12 col-sm-4">
-                            <h2><strong>43</strong></h2>
-                            <p><small>Snippets</small></p>
-                            <button type="button" class="btn btn-primary btn-block"><span class="fa fa-gear"></span> Options </button>
+                        <div class="col-xs-12 col-sm-6">
+                            <h2><strong>5</strong></h2>
+                            <p><small>Events</small></p>
+                            <button class="btn btn-info btn-block"><span class="fa fa-user"></span> Events </button>
                         </div><!--/col-->
               		</div><!--/row-->
               </div><!--/panel-body-->

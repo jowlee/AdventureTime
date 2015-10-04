@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('AdventureTime')
-  .controller('UserCtrl', function ($scope) {
+  .controller('UserCtrl', function ($scope, $http) {
 
     $scope.changeView = function(view){
         if (view === 'past'){
@@ -14,16 +14,14 @@ angular.module('AdventureTime')
         $scope.currentPage = 0;
     };
 
-    $scope.getUserName = function(){
-      $http.get("/api/user/getName").success{
-        
-      }
-    }
+    var getUserBio = function(){
+      $http.get("/api/user/nick").success(function(user){
+        $scope.user = user[0];
+        console.log($scope.user);
 
-    })
-  .filter('startFrom', function() {
-    return function(input, start) {
-        start = +start; //parse to int
-        return input.slice(start);
+      });
     };
-});
+
+    getUserBio();
+
+  })
