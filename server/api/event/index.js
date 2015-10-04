@@ -8,6 +8,7 @@ var router = express.Router();
 
 router.put('/create', controller.create);
 router.post('/edit', controller.edit);
+router.get('/getName',controller.getName);
 
 
 module.exports = router;

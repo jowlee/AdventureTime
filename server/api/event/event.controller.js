@@ -32,6 +32,18 @@ exports.edit = function(req, res){
     });
   };
 
+exports.getName = function(req, res){
+  if(!req.params.name){
+    console.log("in getName with no value");
+    return res.json("No Name Input"); }
+  else{
+    Event.findOne({'name':req.params.username}, function(err, Event){
+      if (err) return res.send(500, err);
+      return res.json(Event.name);
+    })
+  };
+};
+
 
 function handleError(res, err) {
   return res.send(500, err);

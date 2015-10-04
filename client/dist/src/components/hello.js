@@ -1,17 +1,28 @@
-/*
-Creating a component
-The most simple component has a `render` method that returns some
-JSX. `props` are attributes that are passed into the component
-when you instantiate it.
-One caveat is that `render` must return a single parent element;
-you can't return multiple adjacent JSX tags but must wrap them
-in one parent element.
-*/
 
-var HelloMessage = React.createClass({displayName: "HelloMessage",
+
+var Header = React.createClass({displayName: "Header",
+  getInitialState: function(){
+    return {
+      name: ""
+    };
+  },
+
+  componentDidMount: function() {
+    $.get(this.props.source, function(result) {
+      var newName = result;
+      console.log(newName);
+      if (this.isMounted()) {
+        this.setState({
+          name: newName
+        });
+      }
+    }.bind(this));
+  },
+
   render: function () {
-    return React.createElement("h1", null, "Hello ", this.props.message, "!");
+    return React.createElement("h1", null, "Name: ", this.state.name);
   }
+
 });
 
-React.render(React.createElement(HelloMessage, {message: "askdjf;lkdsaf;a"}), document.body);
+React.render(React.createElement(Header, {source: "/api/event/getName"}), document.body);
