@@ -19,8 +19,8 @@ mongoose.connect('mongodb://localhost/AdventureTime');
 expressConfig(app);
 routes(app);
 
-server.listen(8080);
-console.log("The magic on port 8080");
+server.listen(8050);
+console.log("The magic on port 8050");
 
 // Expose app
 exports = module.exports = app;

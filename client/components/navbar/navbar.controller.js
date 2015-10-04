@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('observatory3App')
+angular.module('AdventureTime')
   .controller('NavbarCtrl', function ($scope, $location, $http, Auth) {
     $scope.menu = [{
       'title': 'Home',
