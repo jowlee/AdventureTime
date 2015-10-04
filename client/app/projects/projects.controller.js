@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('observatory3App')
+angular.module('AdventureTime')
 .controller('ProjectsCtrl', function ($scope, $location, $http) {
     $scope.projects = [];
     $scope.projectToAdd = {active: true};

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('observatory3App')
+angular.module('AdventureTime')
   .controller('UserCtrl', function ($scope, User) {
     $scope.currentUsers = User.query();
     $scope.pastUsers = User.past();

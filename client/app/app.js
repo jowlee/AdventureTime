@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('observatory3App', [
+angular.module('AdventureTime', [
   'ngCookies',
   'ngResource',
   'ngSanitize',

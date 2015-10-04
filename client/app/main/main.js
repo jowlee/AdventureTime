@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('observatory3App')
+angular.module('AdventureTime')
   .config(function ($stateProvider) {
     $stateProvider
       .state('main', {
