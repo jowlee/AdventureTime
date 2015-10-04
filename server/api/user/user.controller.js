@@ -72,10 +72,7 @@ exports.addEvent = function(req, res){
     if (err) return res.send(500,err);
       Event.findOne({'name': name}, function(err,newEvent){
       if (err) return res.send(500, err);
-        console.log(user.events.length)
         user.events.push(newEvent);
-        console.log("=======================HERE");
-        console.log(user.events.length)
         user.save(function(err) {
         if (err) return validationError(res, err);
           res.json(200, {success: newEvent.name + " added"});

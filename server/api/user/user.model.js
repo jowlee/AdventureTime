@@ -7,7 +7,7 @@ var Event = require('../event/event.model');
 var UserSchema = new Schema({
   username: {type:String, unique: true},
   //friendslist: [UserSchema],
-  events: [Event],
+  events: [Event.schema],
   tag: [String],
   home: String,
   password: String
