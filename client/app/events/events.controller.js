@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('AdventureTime')
-.controller('ProjectsCtrl', function ($scope, $location, $http) {
+.controller('EventsCtrl', function ($scope, $location, $http) {
     $scope.projects = [];
     $scope.projectToAdd = {active: true};
 
