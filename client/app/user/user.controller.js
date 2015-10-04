@@ -1,9 +1,7 @@
 'use strict';
 
 angular.module('AdventureTime')
-  .controller('UserCtrl', function ($scope, User) {
-    $scope.currentUsers = User.query();
-    $scope.pastUsers = User.past();
+  .controller('UserCtrl', function ($scope) {
 
     $scope.changeView = function(view){
         if (view === 'past'){

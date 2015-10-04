@@ -1,23 +1,12 @@
 'use strict';
 
 angular.module('AdventureTime')
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider) {
     $stateProvider
       .state('user', {
-        url: '/users',
+        url: '/user',
         templateUrl: 'app/user/user.html',
         controller: 'UserCtrl'
       });
 
-    // If the user navigates to /me, redirect them to their profile page
-    $urlRouterProvider.when('/me', function($location, Auth){
-    	Auth.isLoggedInAsync(function(loggedIn){
-    		if (loggedIn){
-      		var loggedInUser = Auth.getCurrentUser();
-				$location.path("/users/" + loggedInUser._id + "/profile");
-			}else{
-				$location.path("/login");
-			}
-    	});
-    });
   });

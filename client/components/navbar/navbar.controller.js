@@ -7,10 +7,10 @@ angular.module('observatory3App')
       'link': '/'
     },{
       'title': 'Profile',
-      'link': '/profile'
+      'link': '/user'
     },{
       'title': 'Adventures',
-      'link': '/adventures'
+      'link': '/events'
     }];
 
 

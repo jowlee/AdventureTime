@@ -3,9 +3,10 @@
 angular.module('AdventureTime')
   .config(function ($stateProvider) {
     $stateProvider
-      .state('projects', {
-        url: '/projects',
+      .state('events', {
+        url: '/events',
         templateUrl: 'app/events/events.html',
-        controller: 'ProjectsCtrl'
+        controller: 'EventsCtrl'
       })
+
   });
