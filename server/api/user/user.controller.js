@@ -1,6 +1,7 @@
 'use strict';
 
 var User = require('./user.model');
+var Event = require('../event/event.model');
 
 // creates initial user
 exports.create = function(req, res){
@@ -62,6 +63,26 @@ exports.removeTag = function(req, res){
     });
   });
 };
+
+exports.addEvent = function(req, res){
+  var username = req.body.username;
+  var name = req.body.name;
+  if(!name || !username) return handleError(res, err);
+    User.findOne({'username':username}, function(err,user){
+    if (err) return res.send(500,err);
+      Event.findOne({'name': name}, function(err,newEvent){
+      if (err) return res.send(500, err);
+        console.log(user.events.length)
+        user.events.push(newEvent);
+        console.log("=======================HERE");
+        console.log(user.events.length)
+        user.save(function(err) {
+        if (err) return validationError(res, err);
+          res.json(200, {success: newEvent.name + " added"});
+        });
+      });
+    });
+  };
 
 function handleError(res,err) {
   return res.send(500,err);

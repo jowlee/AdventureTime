@@ -10,6 +10,7 @@ router.put('/create', user.create);
 
 router.post('/edit', user.edit);
 router.post('/addTag',user.addTag);
+router.post('/addEvent',user.addEvent);
 
 router.delete('/removeTag',user.removeTag);
 
